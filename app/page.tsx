@@ -388,7 +388,7 @@ const HeroSection = () => {
            <div className="flex flex-col sm:flex-row gap-4 pt-4">
     <a
       href="#admissions"
-      className="group relative inline-flex items-center justify-center space-x-3 rounded-full px-8 py-4 text-base font-bold uppercase transition-all duration-500 hover:scale-105 hover:shadow-2xl shadow-lg overflow-hidden"
+      className="group relative inline-flex items-center justify-center space-x-3 rounded-full px-8 py-4 text-12 font-bold uppercase transition-all duration-500 hover:scale-105 hover:shadow-2xl shadow-lg overflow-hidden"
       style={{ backgroundColor: ACCENT_GOLD, color: PRIMARY_BLUE }}
     >
       <span className="relative z-10">Apply Now</span>
