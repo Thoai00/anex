@@ -385,26 +385,26 @@ const HeroSection = () => {
             </div>
             
             {/* Primary CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <a
-                href="#admissions"
-                className="group relative inline-flex items-center justify-center space-x-3 rounded-full px-8 py-4 text-lg font-bold uppercase transition-all duration-500 hover:scale-105 hover:shadow-2xl shadow-lg overflow-hidden"
-                style={{ backgroundColor: ACCENT_GOLD, color: PRIMARY_BLUE }}
-              >
-                <span className="relative z-10">Apply Now</span>
-                <ArrowRight size={20} className="relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
-                <div className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
-              </a>
-              <a
-                href="#tour"
-                className="group relative inline-flex items-center justify-center space-x-3 rounded-full border-2 px-8 py-4 text-lg font-bold uppercase transition-all duration-500 hover:bg-white/10 overflow-hidden"
-                style={{ borderColor: ACCENT_GOLD, color: ACCENT_GOLD }}
-              >
-                <Play size={20} className="relative z-10 group-hover:scale-110 transition-transform duration-300" />
-                <span className="relative z-10">Virtual Tour</span>
-                <div className="absolute inset-0 bg-yellow-400/10 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
-              </a>
-            </div>
+           <div className="flex flex-col sm:flex-row gap-4 pt-4">
+    <a
+      href="#admissions"
+      className="group relative inline-flex items-center justify-center space-x-3 rounded-full px-8 py-4 text-base font-bold uppercase transition-all duration-500 hover:scale-105 hover:shadow-2xl shadow-lg overflow-hidden"
+      style={{ backgroundColor: ACCENT_GOLD, color: PRIMARY_BLUE }}
+    >
+      <span className="relative z-10">Apply Now</span>
+      <ArrowRight size={20} className="relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
+      <div className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+    </a>
+    <a
+      href="#tour"
+      className="group relative inline-flex items-center justify-center space-x-3 rounded-full border-2 px-8 py-4 text-base font-bold uppercase transition-all duration-500 hover:bg-white/10 overflow-hidden"
+      style={{ borderColor: ACCENT_GOLD, color: ACCENT_GOLD }}
+    >
+      <Play size={20} className="relative z-10 group-hover:scale-110 transition-transform duration-300" />
+      <span className="relative z-10">Virtual Tour</span>
+      <div className="absolute inset-0 bg-yellow-400/10 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+    </a>
+</div>
 
             {/* Quick Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-8">
