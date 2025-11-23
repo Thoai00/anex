@@ -16,12 +16,10 @@ const FIXED_PAGE_PADDING = "mx-auto px-4 lg:px-[150px]";
 
 // Enhanced Mock Data
 const navLinks = [
-  { name: 'Home', href: '#' },
   { name: 'About Us', href: '#about' },
   { name: 'Academics', href: '#academics' },
   { name: 'Admissions', href: '#admissions' },
   { name: 'Campus Life', href: '#campus-life' },
-  { name: 'News & Events', href: '#news' },
 ];
 
 const quickLinks = [
@@ -178,13 +176,39 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Effect to prevent body scrolling when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
+
+
+  // Determine the main header background class
+  const headerClasses = `fixed top-0 left-0 right-0 z-50 transition-all duration-500 
+    ${scrollDirection === 'down' ? '-translate-y-full' : 'translate-y-0'} 
+    ${isOpen 
+      ? 'bg-white shadow-lg' // Solid white and shadow when mobile menu is open
+      : scrolled 
+        ? 'shadow-2xl bg-white/95 backdrop-blur-md' // Scrolled state
+        : 'bg-white' // Default (top of page, closed menu)
+    }`;
+
+  // Calculate the height of the utility bar and main nav for the mobile menu 'top' offset
+  // In a real scenario, you'd use a ref to measure this, but for Tailwind/fixed padding:
+  // Utility bar: py-2 (~32px) + border (~1px) = ~33px
+  // Main nav: p-4 lg:p-4 (~32px) = ~32px
+  // Total ~65px. Using a placeholder class to demonstrate the concept.
+  const mobileMenuTopOffsetClass = 'top-[4rem] md:top-[6.5rem]'; // Adjusted for Utility Bar + Main Nav height
+
   return (
     <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrollDirection === 'down' ? '-translate-y-full' : 'translate-y-0'
-      } ${
-        scrolled ? 'shadow-2xl bg-white/95 backdrop-blur-md' : 'bg-white'
-      }`}
+      className={headerClasses}
     >
       {/* Utility Bar */}
       <div className="border-b border-gray-200 bg-gray-50">
@@ -206,7 +230,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-
+      
       {/* Main Navigation */}
       <div className={`${FIXED_PAGE_PADDING} flex items-center justify-between p-4 lg:p-4`}>
         <SchoolLogo />
@@ -260,10 +284,11 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed inset-0 z-40 transform transition-all duration-500 ease-in-out lg:hidden ${
+        className={`fixed inset-0 z-40 transform transition-all duration-500 ease-in-out lg:hidden ${mobileMenuTopOffsetClass} ${
           isOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
         }`}
-        style={{ backgroundColor: PRIMARY_BLUE, top: '6.5rem' }}
+        // The mobile menu background color should remain here:
+        style={{ backgroundColor: PRIMARY_BLUE }} 
       >
         <nav className="flex flex-col p-6 space-y-2">
           {navLinks.map((link, index) => (
